@@ -31,7 +31,7 @@ var WindowsFrameworks = new string[] {
     "net-4.5", "net-4.0", "net-3.5", "net-2.0", "netstandard16", "portable" };
 
 var LinuxFrameworks = new string[] {
-    "net-4.5", "net-4.0", "net-3.5", "net-2.0" };
+    "net-4.5", "net-4.0", "net-3.5", "net-2.0", "netstandard16" };
 
 var AllFrameworks = IsRunningOnWindows() ? WindowsFrameworks : LinuxFrameworks;
 
@@ -228,7 +228,6 @@ Task("Build20")
 
 Task("BuildNetStandard")
     .Description("Builds the .NET Standard version of the framework")
-    .WithCriteria(IsRunningOnWindows())
     .Does(() =>
     {
         if(!isDotNetCoreInstalled)
@@ -321,7 +320,6 @@ Task("Test20")
 
 Task("TestNetStandard")
     .Description("Tests the .NET Standard version of the framework")
-    .WithCriteria(IsRunningOnWindows())
     .IsDependentOn("BuildNetStandard")
     .OnError(exception => { ErrorDetail.Add(exception.Message); })
     .Does(() =>
