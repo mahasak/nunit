@@ -32,14 +32,11 @@ namespace NUnit.Framework
     /// ParallelizableAttribute is used to mark tests that may be run in parallel.
     /// </summary>
     [AttributeUsage( AttributeTargets.Assembly | AttributeTargets.Class | AttributeTargets.Method, AllowMultiple=false, Inherited=false )]
-    public sealed class NonParallelizableAttribute : PropertyAttribute
+    public sealed class NonParallelizableAttribute : ParallelizableAttribute
     {
         /// <summary>
         /// Construct a NonParallelizableAttribute.
         /// </summary>
-        public NonParallelizableAttribute()
-        {
-            Properties.Add(PropertyNames.ParallelScope, ParallelScope.None);
-        }
+        public NonParallelizableAttribute() : base(ParallelScope.None) { }
     }
 }

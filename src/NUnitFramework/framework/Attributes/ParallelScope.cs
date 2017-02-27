@@ -57,7 +57,6 @@ namespace NUnit.Framework
         [EditorBrowsable(EditorBrowsableState.Never)]
         ItemMask = Self + None,
 
-
         /// <summary>
         /// Descendants of the test may be run in parallel with one another.
         /// Valid on assemblies and classes but not on methods.
@@ -73,6 +72,7 @@ namespace NUnit.Framework
         /// Mask used to extract all the flags that impact descendants of a 
         /// test and place them in the TestExecutionContext.
         /// </summary>
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         ContextMask = Children + Fixtures
     }
